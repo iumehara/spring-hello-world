@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata: 
+  name: helloworld-deployment
+  labels:
+    app: helloworld
+
+spec:
+  template:
+    metadata:
+      name: helloworld-pod
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: spring-hello-world
+        image: iumehara/spring-hello-world
+  replicas: 2
+  selector:
+    matchLabels:
+      app: helloworld
+ 
