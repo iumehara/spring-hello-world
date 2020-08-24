@@ -1,3 +1,5 @@
+.PHONY: build
+
 test:
 	./gradlew test
 
@@ -5,13 +7,16 @@ build:
 	./gradlew assemble
 
 start:
-	java -jar ./build/libs/helloworld-0.0.1-SNAPSHOT.jar
+	source .env.local && java -jar ./build/libs/helloworld-0.0.1-SNAPSHOT.jar
 
 build_docker:
-	docker build -t example/helloworld .
+	./gradlew assemble
+	docker build -t helloworld .
+	cd src/main/resources/db && docker build -t helloworld_db .
+	docker-compose build
 
 start_docker:
-	docker run -p 8080:8080 example/helloworld
+	docker-compose up
 
 
 login_minikube_k8s:

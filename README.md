@@ -1,4 +1,5 @@
-![Java CI with Gradle](https://github.com/iumehara/spring-hello-world/workflows/Java%20CI%20with%20Gradle/badge.svg)
+![Test](https://github.com/iumehara/spring-hello-world/workflows/Test/badge.svg)
+![Build](https://github.com/iumehara/spring-hello-world/workflows/Build/badge.svg)
 
 # Hello World sample app
 
@@ -24,4 +25,10 @@
 #### Kubernetes
 - `make build_k8s`
 
-uses [iumehara/spring-hello-world image](https://hub.docker.com/r/iumehara/spring-hello-world) from dockerhub 
+uses [iumehara/spring-hello-world image](https://hub.docker.com/r/iumehara/spring-hello-world) from dockerhub
+
+## ToDo
+- [x] Build/Start with database locally 
+- [x] Build/Start with database with Docker Compose 
+- [ ] Build/Start with database with Kubernetes 
+
