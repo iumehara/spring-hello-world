@@ -31,13 +31,17 @@ jobs:
     needs: build_jar
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - name: pwd after checkout
+        run: pwd && ls
       - uses: actions/download-artifact@v2
         with:
           name: helloworld-jar
           path: ./build/libs/helloworld-0.0.1-SNAPSHOT.jar
-      - uses: actions/checkout@v2
-      - name: Print current directory
-        run: pwd
+      - name: pwd after download artifact
+        run: pwd && ls
+      - name: find libs directory
+        run: ls ./build/libs
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
