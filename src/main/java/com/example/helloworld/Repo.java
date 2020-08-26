@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface Repo {
     List<String> getAll();
+    Integer create(String sentence);
 }
