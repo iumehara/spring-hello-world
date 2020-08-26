@@ -1,12 +1,9 @@
-apiVersion: apps/v1
-
 kind: Deployment
-
+apiVersion: apps/v1
 metadata: 
   name: helloworld-deployment
   labels:
     app: helloworld
-
 spec:
   template:
     metadata:
@@ -16,7 +13,10 @@ spec:
     spec:
       containers:
       - name: spring-hello-world
-        image: iumehara/spring-hello-world
+        image: iumehara/spring-hello-world:latest
+        envFrom:
+          - configMapRef:
+              name: helloworld-config
   replicas: 2
   selector:
     matchLabels:
