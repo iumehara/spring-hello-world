@@ -25,6 +25,8 @@ jobs:
           name: helloworld-jar
           path: ./build/libs/helloworld-0.0.1-SNAPSHOT.jar
           if-no-files-found: error
+      - name: Print artifact path
+        run: cd ./build/libs && pwd
   push_to_dockerhub:
     needs: build_jar
     runs-on: ubuntu-latest
@@ -34,6 +36,8 @@ jobs:
           name: helloworld-jar
           path: ./build/libs/helloworld-0.0.1-SNAPSHOT.jar
       - uses: actions/checkout@v2
+      - name: Print current directory
+        run: pwd
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
