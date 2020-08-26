@@ -8,7 +8,7 @@ on:
       - completed
 
 jobs:
-  build:
+  build_jar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,19 +20,19 @@ jobs:
         run: chmod +x gradlew
       - name: build jar
         run: ./gradlew assemble
-      - uses: actions/upload-artifact@master
+      - uses: actions/upload-artifact@v2
         with:
           name: helloworld-jar
-          path: build/libs/helloworld-0.0.1-SNAPSHOT.jar
-  push_to_registry:
-    needs: build
-    name: Push Docker image to Docker Hub
+          path: ./build/libs/helloworld-0.0.1-SNAPSHOT.jar
+          if-no-files-found: error
+  push_to_dockerhub:
+    needs: build_jar
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@master
+      - uses: actions/download-artifact@v2
         with:
           name: helloworld-jar
-          path: build/libs/helloworld-0.0.1-SNAPSHOT.jar
+          path: ./build/libs/helloworld-0.0.1-SNAPSHOT.jar
       - uses: actions/checkout@v2
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
