@@ -1,5 +1,5 @@
-![Test](https://github.com/iumehara/spring-hello-world/workflows/Test/badge.svg)
-![Build](https://github.com/iumehara/spring-hello-world/workflows/Build/badge.svg)
+[![Test](https://github.com/iumehara/spring-hello-world/workflows/Test/badge.svg)](https://github.com/iumehara/spring-hello-world/actions?query=workflow%3ATest)
+[![Build](https://github.com/iumehara/spring-hello-world/workflows/Build/badge.svg)](https://github.com/iumehara/spring-hello-world/actions?query=workflow%3ABuild)
 
 # Hello World sample app
 
@@ -9,7 +9,8 @@
 - Spring Boot Starter Web/Test
 
 ## Behavior
-- GET request to "localhost:8080/" returns "hello world!" 
+- `GET` request to `localhost:8080/` returns list of strings 
+- `POST` request to `localhost:8080/` with `"{\"sentence\":\"my greeting！\"}"` adds new greeting to DB 
 - 2 passing tests (one @SpringBootTest and one unit test) 
 
 ## Test/Build/Run
@@ -27,8 +28,11 @@
 
 uses [iumehara/spring-hello-world image](https://hub.docker.com/r/iumehara/spring-hello-world) from dockerhub
 
-## ToDo
-- [x] Build/Start with database locally 
-- [x] Build/Start with database with Docker Compose 
-- [ ] Build/Start with database with Kubernetes 
 
+## CI (Github Actions)
+#### Test
+- run all tests
+
+#### Build
+- assemble jar
+- push to DockerHub
