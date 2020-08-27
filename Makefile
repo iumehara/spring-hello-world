@@ -18,13 +18,16 @@ build_docker:
 start_docker:
 	docker-compose up
 
-
 login_minikube_k8s:
 	minikube start --driver=virtualbox
 
 login_tks_k8s:
-	./pod/kubectl-tks-login.sh
+	./pod/bin/kubectl-tks-login.sh
 
 build_k8s:
-	kubectl create -f pod/deployment-definition.yaml
-	kubectl create -f pod/service-definition.yaml
+	./pod/bin/create-db.sh
+	./pod/bin/create-app.sh
+
+stop_k8s:
+	./pod/bin/delete-app.sh
+	./pod/bin/delete-db.sh

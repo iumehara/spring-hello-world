@@ -1,3 +1,5 @@
+#!/bin/bash
+
 kubectl delete svc postgres
 kubectl delete deployment postgres
 kubectl delete configmap postgres-config

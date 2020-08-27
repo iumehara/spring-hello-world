@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata: 
-  name: helloworld-deployment
+  name: helloworld
   labels:
     app: helloworld
 spec:
